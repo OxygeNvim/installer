@@ -11,4 +11,4 @@ oxygen install
 oxygen uninstall
 ```
 
-> You can pass `-y` flag to answer all questions as yes
+> You can add `-y` flag to answer yes to all questions
