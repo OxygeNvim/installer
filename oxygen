@@ -129,7 +129,7 @@ install)
 	printc $RED "Installing OxygeNvim...\n"
 
 	if [ -d "$NVIM_DIR" ]; then
-		if [ ! -f "$NVIM_DIR/bin/oxygen.txt" ]; then
+		if [ ! -d "$NVIM_DIR/lua/oxygen" ]; then
 			printc $BLUE "Backing up old neovim config..."
 
 			mv $NVIM_DIR "$NVIM_DIR.backup"
@@ -138,15 +138,16 @@ install)
 
 			clone
 		else
-			printc $RED "Found OxygeNvim, exiting the installation."
-			exit 0
+			if ! confirm "${GREEN}Found OxygeNvim, Do you want to continue? (this will not affect your config)"; then
+				exit 0
+			fi
 		fi
 	else
 		clone
-	fi
 
-	if [ ! -f "$NVIM_DIR/lua/config.lua" ]; then
-		mv $NVIM_DIR/lua/config_example.lua $NVIM_DIR/lua/config.lua
+		if [ ! -f "$NVIM_DIR/lua/config.lua" ]; then
+			mv $NVIM_DIR/lua/config_example.lua $NVIM_DIR/lua/config.lua
+		fi
 	fi
 
 	if confirm "${GREEN}Would you like to install node modules?"; then
@@ -259,7 +260,7 @@ uninstall)
 	printc $GREEN "Done!"
 	;;
 *)
-	echo "oxygen - A script utility for installing and uninstalling OxygeNvim"
+	echo "oxygen"
 	echo ""
 	echo "Commands:"
 	echo "  install - Installs OxygeNvim and their required packages"

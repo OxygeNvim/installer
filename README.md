@@ -1,4 +1,5 @@
-# installer
+<h1 align="center">installer</h1>
+<h2 align="center>A *small* script that installs OxygeNvim automatically</h2>
 
 ## Usage
 
