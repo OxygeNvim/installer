@@ -146,7 +146,7 @@ install)
 		clone
 
 		if [ ! -f "$NVIM_DIR/lua/config.lua" ]; then
-			mv $NVIM_DIR/lua/config_example.lua $NVIM_DIR/lua/config.lua
+			cp $NVIM_DIR/lua/config_example.lua $NVIM_DIR/lua/config.lua
 		fi
 	fi
 
